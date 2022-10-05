@@ -4,11 +4,16 @@
 
 import { expect, test } from "@jest/globals";
 import { render } from "@testing-library/react";
+import { StaticRouter } from "react-router-dom/server";
 import Pet from "../Pet";
 
 test("Displays a default thumbnail", async () => {
   // Render our pet
-  const pet = render(<Pet />);
+  const pet = render(
+    <StaticRouter>
+      <Pet />
+    </StaticRouter>
+  );
 
   // Look at what was rendered to see if we can find a thumbnail
   const petThumbnail = await pet.findByTestId("thumbnail");
